@@ -1,0 +1,25 @@
+{
+  "name": "test-task-14",
+  "version": "1.0.0",
+  "description": "test task №14 with frontend and backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "import": "node backend/seeder.js"
+  },
+  "author": "Vladimir Mogilin <studium2012@yandex.ru>",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^7.3.0",
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "pg": "^8.8.0"
+  }
+}

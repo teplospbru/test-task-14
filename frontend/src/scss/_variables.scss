@@ -1,0 +1,27 @@
+// colors
+$blue-color: #1461b4;
+$light-blue-color: #f6fafd;
+$grey-color: #d0d7e2;
+$dark-font-color: #2c2d33;
+$light-font-color: #545558;
+$red-color: #d04739;
+
+// fonts
+$font: 'Open Sans', sans-serif;
+$base-font-size: 16;
+
+// mixins
+@mixin font($size, $weight, $line: 1) {
+    font-size: $size + px;
+    font-size: calc($size / $base-font-size) + rem; 
+    font-weight: $weight;
+    line-height: $line;
+    font-style: normal;
+};
+
+@mixin flex($justify, $align, $direction: row) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+};

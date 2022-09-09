@@ -1,0 +1,12 @@
+@import '../../scss/variables';
+@import '../../scss/fonts.scss';
+
+.header {
+    border-bottom: 1px solid $grey-color;
+    h1 {
+        padding: 1rem 0;
+        text-transform: uppercase;
+        @include font(32, 600);
+        color: $dark-font-color;
+    }
+}

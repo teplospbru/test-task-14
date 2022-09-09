@@ -1,0 +1,68 @@
+@import '../../scss/variables';
+@import '../../scss/fonts.scss';
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    //margin-bottom: 15px;
+    border-collapse: collapse;
+}
+
+thead tr {
+    border-bottom: 1px solid $grey-color;
+    th {
+        
+        min-width: 135px;
+    }
+    @at-root .th-content {
+        
+        padding: 0.75rem 0;
+        @include flex(flex-start, center);
+        @include font(16, 600, 1.4);
+        cursor: pointer;
+        &__arrow {
+            width: calc(9.2px * 1.2);
+            height: calc(12px * 1.2);
+            margin: 0 1rem;
+            svg{
+                display: block;
+                width: 100%;
+                height: 100%;
+                fill: none;
+                stroke: $blue-color; 
+            }
+        }
+        
+    }
+}
+
+thead th {
+    // &:nth-child(1) {
+    //     width: 10%;
+    // }
+    &:nth-child(2) {
+        width: 50%;
+    }
+    // &:nth-child(3) {
+    //     width: 10%;
+    // }
+    // &:nth-child(4) {
+    //     width: 10%;
+    // }
+}
+
+tbody {
+    tr {
+        border-bottom: 1px solid $grey-color;
+    }
+    td {
+        min-width: 135px;
+        padding: 0.75rem 0;
+        //border: 1px solid $grey-color;
+        @include font(16, 500, 1.4);
+        &:first-child {
+            //text-align: center;
+            vertical-align: middle;
+        }
+    }
+}
