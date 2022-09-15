@@ -4,11 +4,11 @@ const { Pool } = require('pg');
 const cors = require('cors');
 
 const pool = new Pool({
-    host: "localhost",
-    user: "postgres",
+    host: process.env.DB_HOST,
+    user: process.env.DB_USERNAME,
     port: 5432,
-    password: process.env.PASSWORD,
-    database: "testtask14"
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
 });
 
 const app = express();
@@ -18,7 +18,7 @@ const port = 3001;
 app.use(cors());
 
 app.get('/api/rows', (req, res) => {
-    pool.query('SELECT * FROM testtask14', (err, data) => {
+    pool.query('SELECT * FROM ' + process.env.DB_NAME, (err, data) => {
         if(err) {
             console.log(err.message);
         } else {

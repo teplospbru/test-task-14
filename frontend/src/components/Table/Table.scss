@@ -4,24 +4,21 @@
 table {
     table-layout: fixed;
     width: 100%;
-    //margin-bottom: 15px;
     border-collapse: collapse;
 }
 
 thead tr {
+    border-top: 1px solid $grey-color;
     border-bottom: 1px solid $grey-color;
-    th {
-        
-        min-width: 135px;
-    }
     @at-root .th-content {
-        
+        min-width: 135px;
         padding: 0.75rem 0;
         @include flex(flex-start, center);
         @include font(16, 600, 1.4);
         cursor: pointer;
         &__arrow {
             width: calc(9.2px * 1.2);
+            min-width: calc(9.2px * 1.2);
             height: calc(12px * 1.2);
             margin: 0 1rem;
             svg{
@@ -58,10 +55,8 @@ tbody {
     td {
         min-width: 135px;
         padding: 0.75rem 0;
-        //border: 1px solid $grey-color;
         @include font(16, 500, 1.4);
         &:first-child {
-            //text-align: center;
             vertical-align: middle;
         }
     }

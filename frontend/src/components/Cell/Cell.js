@@ -1,12 +1,12 @@
 import './Cell.scss';
 
 // Ячейка заголовка таблицы
-const Cell = ({ name, title, sortName, setSortName, isDescending, setDescending }) => {
+const Cell = ({ title, sortTitle, setSortTitle, isDescending, setDescending }) => {
 
     // Обработка клика по заголовку
     const clickHandler = () => {
-        setSortName(name)
-        if(name === sortName) {
+        setSortTitle(title)
+        if(title === sortTitle) {
             setDescending(isDescending => !isDescending);
         } else {
             setDescending(true)
@@ -14,7 +14,7 @@ const Cell = ({ name, title, sortName, setSortName, isDescending, setDescending 
     };
 
     return (
-        <div className="th-content" onClick={ () => clickHandler() } data-testid={ "sort-" + name }>
+        <div className="th-content" onClick={ () => clickHandler() } data-testid={ "sort-" + title }>
             <span>{ title }</span>
             <div className="th-content__arrow">
                 <svg>

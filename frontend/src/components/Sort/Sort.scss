@@ -1,39 +1,20 @@
 @import '../../scss/variables';
 @import '../../scss/fonts.scss';
 
-.sort {
-    @include flex(flex-start, center);
-    padding: 1.2rem 0;
-    border-bottom: 1px solid $grey-color;
-    button {
-        display: block;
-        padding: 0.75rem 1rem;
-        margin-left: 1rem;
-        //margin-right: 100px;
-        border-radius: 0.25rem;
-        @include font(16, 500, 1);
-        color: #fff;
-        background-color: $blue-color;
-        cursor: pointer;
-        &:hover {
-            background-color: lighten($blue-color, 5%);
-        }
-    }
-}
-
 .sort-container {
-    width: 60%;
+    width: 100%;
+    margin: 2.5rem 0;
     @include flex(flex-start, stretch);
     border: 1px solid $grey-color;
     border-radius: 0.25rem;
-    .select, input {
-        //flex: 8rem;
+    position: relative;
+    // overflow: hidden;
+    .select, .input {
         min-width: 8rem;
         font-family: $font;
         @include font(16, 500, 1);
     }
     .select {
-        //width: 8rem;
         flex: 0 0 10rem;
         position: relative;
         border-right: 1px solid $grey-color;
@@ -52,13 +33,48 @@
             }
         }
     }
-    input {
+    .button {
+        font-family: $font;
+        @include font(16, 500, 1);
+        border-left: 1px solid $blue-color;
+        padding: 0.75rem 1rem;
+        color: #fff;
+        background-color: $blue-color;
+        border-bottom-right-radius: 0.25rem;
+        border-top-right-radius: 0.25rem;
+        overflow: hidden;
+        cursor: pointer;
+        &:hover {
+            background-color: lighten($blue-color, 5%);
+        }
+    }
+    .input {
+        flex: auto;
         display: block;
-        //flex: 0 0 300px;
-        //width: 14rem !important;
         align-content: center;
         font-family: $font;
         padding: 0 1rem;
+        position: relative;
+        input {
+            width: 100%;
+            height: 100%;
+            font-family: $font;
+            @include font(16, 500, 1);
+        }
+        .icon {
+            position: absolute;
+            padding: 0 1rem;
+            width: calc(2rem + 12px);
+            height: 100%;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            cursor: pointer;
+            svg {
+                fill: none;
+                stroke: $blue-color;
+            }
+        }
     }
 }
 
@@ -70,6 +86,7 @@
     border: 1px solid $grey-color;
     border-radius: 0.25rem;
     background-color: #fff;
+    //z-index: 10;
     .option {
         padding: 0.75rem 1rem;
         cursor: pointer;
@@ -80,6 +97,9 @@
 }
 
 .warning {
+    position: absolute;
+    left: 0;
+    top: -80%;
     @include flex(flex-start, center);
     gap: 0.5rem;
     margin-left: 1rem;

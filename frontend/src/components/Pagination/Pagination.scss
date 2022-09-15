@@ -1,2 +1,28 @@
 @import '../../scss/variables';
 @import '../../scss/fonts.scss';
+
+.pagination {
+    @include flex(flex-start, center);
+    gap: 1rem;
+    @include font(20, 600, 1.4);
+    margin: 2rem 0;
+    .icon {
+        width: calc(18px * 1.2 + 1rem);
+        height: calc(12px * 1.2);
+        cursor: pointer;
+        svg {
+            fill: none;
+            stroke: $blue-color;
+        }
+    }
+    .page {
+        border: 1px solid transparent;
+        padding: 0 0.5rem;
+        a {
+            text-decoration: none;
+            color: $blue-color;
+            cursor: pointer;
+        }
+    }
+
+}

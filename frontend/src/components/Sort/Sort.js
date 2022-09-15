@@ -68,14 +68,14 @@ const Sort = () => {
             if(filterItem === 'Количество' || filterItem === 'Расстояние') {
                 if(/^[0-9]+$/.test(value)) {
                     setWarning(false);
-                    setSearchParams({ item: filterItem, condition: filterCondition, value });
+                    setSearchParams({ item: filterItem, condition: filterCondition, value, page: 1 });
                 } else {
                     setWarning(true);
                     setWarningMessage('Введите число');
                 }
             } else {
                 setWarning(false);
-                setSearchParams({ item: filterItem, condition: filterCondition, value });
+                setSearchParams({ item: filterItem, condition: filterCondition, value, page: 1 });
             } 
         } else {
             setWarning(true);
@@ -86,7 +86,7 @@ const Sort = () => {
     // Таймер показа сообщения ошибки
     useEffect(() => {
         if(isWarning) {
-            setTimeout(setWarning, 1500, false);
+            setTimeout(setWarning, 2500, false);
         };
     }, [isWarning]);
 
@@ -112,23 +112,36 @@ const Sort = () => {
         }
     };
 
+    // Хэндлер клика по кнопке "times"
+    const handleTimesClick = () => {
+        setValue('');
+    };
+
     return (
-        <div className='sort'>
+        <>
             <div className='sort-container'>
                 <Select options={ items } setFilter={ setFilterItem } item={ filterItem } cb={ cb } />
                 <Select options={ conditions } setFilter={ setFilterCondition } item={ filterCondition } cb={ null } />
-                <input 
-                    type='text' 
-                    placeholder='Введите зн...'
-                    value={ value }
-                    onChange={ inputHandler }
-                    onKeyPress = { pressEnterHandler } 
-                    onFocus={ focusHandler }
-                    onBlur={ blurHandler }
-                ></input>
-            </div>
-            <button onClick={ clickHandler }>Искать</button>
-            { // сообщение об ошибке
+                <div className='input'>
+                    <input 
+                        type='text' 
+                        placeholder='Введите значение'
+                        value={ value }
+                        onChange={ inputHandler }
+                        onKeyPress = { pressEnterHandler } 
+                        onFocus={ focusHandler }
+                        onBlur={ blurHandler }
+                    ></input>
+                    <div className='icon' onClick={ handleTimesClick }>
+                        <svg>
+                            <use xlinkHref='#times'></use>
+                        </svg>
+                    </div>
+                </div>
+                <div className='button' onClick={ clickHandler }>
+                    <span>Искать</span>
+                </div>
+                { // сообщение об ошибке
                 isWarning
                     ? (<div className='warning'>
                             <div className='icon'>
@@ -140,7 +153,8 @@ const Sort = () => {
                         </div>)
                     : null
             }
-        </div>
+            </div>
+        </>
     )
 };
 

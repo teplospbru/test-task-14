@@ -1,79 +1,32 @@
 import Cell from '../Cell/Cell';
 import './Table.scss';
 import { useEffect, useState } from 'react';
+import { getSortedData } from '../../helpers/sort';
 
 
 const Table = ({ data }) => {
-    const [ sortName, setSortName ] = useState('Описание'); // определеяем название столбца сортировки
+    const [ sortTitle, setSortTitle ] = useState('Описание'); // определеяем название столбца сортировки
     const [ isDescending, setDescending ] = useState(true); // определяем направление сортировки
-    const thead = [ 
-        {title: 'Описание', name: 'description'},
-        {title: 'Количество', name: 'quantity'},
-        {title: 'Расстояние', name: 'distance'},
-    ]
 
-    // сортируем пагинированные посты
-   if(data) {
-        if(sortName === 'description') {
-            data.sort((a,b) => {
-                if(isDescending) {
-                    if (a.name.toLowerCase() > b.name.toLowerCase()) {
-                        return 1;
-                    }
-                    if (a.name.toLowerCase() < b.name.toLowerCase()) {
-                        return -1;
-                    }
-                    return 0;
-                } else {
-                    if (a.name.toLowerCase() < b.name.toLowerCase()) {
-                        return 1;
-                    }
-                    if (a.name.toLowerCase() > b.name.toLowerCase()) {
-                        return -1;
-                    }
-                    return 0;
-                }
-            });
-        } else {
-            data.sort((a,b) => {
-                if(isDescending) {
-                    if (a[sortName] > b[sortName]) {
-                        return 1;
-                    }
-                    if (a[sortName] < b[sortName]) {
-                        return -1;
-                    }
-                    return 0;
-                } else {
-                    if (a[sortName] < b[sortName]) {
-                        return 1;
-                    }
-                    if (a[sortName] > b[sortName]) {
-                        return -1;
-                    }
-                    return 0;
-                };
-            });
-        }
-   }
-console.log(data)
+    // сортируем пагинированные строки
+    getSortedData(sortTitle, isDescending, data);
+
     return data && (
         <table>
             <thead>
                 <tr>
-                    <th>
+                    <th key='7_77'>
                         <div  className="th-content">
                             <span>Дата</span>
                         </div>
                     </th>
                     {
-                        thead.map(({ title, name }) => (
-                            <th><Cell 
-                                name={ name }
+                        [ 'Описание', 'Количество', 'Расстояние' ].map((title, index) => (
+                            <th key={ '7_' + index }><Cell 
                                 title={ title }  
-                                sortName={ sortName } 
-                                setSortName={ setSortName }
-                                isDescending={ name === sortName ? isDescending : true }
+                                sortTitle={ sortTitle } 
+                                setSortTitle={ setSortTitle }
+                                isDescending={ title === sortTitle ? isDescending : true }
                                 setDescending={ setDescending } 
                             /></th>
                         ))
@@ -82,8 +35,8 @@ console.log(data)
             </thead>
             <tbody>
                 {
-                    data.map(({ date, name: description, quantity, distance }) => (
-                        <tr>
+                    data.map(({ date, name: description, quantity, distance }, index) => (
+                        <tr key={ '8_' + index }>
                             <td>{ date }</td>
                             <td>{ description }</td>
                             <td>{ quantity }</td>
