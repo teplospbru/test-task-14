@@ -5,7 +5,7 @@ import './Pagination.scss';
 
 const Pagination = ({ data }) => {
     const [ searchParams, setSearchParams ] = useSearchParams();
-    const [ pagination, setPagination ] = useState(); // храним 
+    const [ pagination, setPagination ] = useState(); // массив для пагинации 
     const [ filterItem, setFilterItem ] = useState();
     const [ filterCondition, setFilterCondition ] = useState();
     const [ value, setValue ] = useState(''); 

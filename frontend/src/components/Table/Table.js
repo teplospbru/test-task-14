@@ -1,6 +1,6 @@
 import Cell from '../Cell/Cell';
 import './Table.scss';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { getSortedData } from '../../helpers/sort';
 
 
